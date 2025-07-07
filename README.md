@@ -3,6 +3,14 @@
 * How to use to fix other docker images:
   * https://internetworking.dev/mitigating-gosu-security-concerns/ (https://archive.is/wip/98TVx)
 
+For example, I used this to build better mongo:
+```
+FROM prapl4group/better-bases:gosu-1.17-go-1.24-20250707 AS gosu
+FROM mongo:4.4.29-rfhardened
+COPY --from=gosu /go/bin/gosu-amd64 /usr/local/bin/gosu
+RUN chmod +x /usr/local/bin/gosu
+```
+
 ```diff
 From 7b119c01586a470ebc4d7bca99b77b22d72581a6 Mon Sep 17 00:00:00 2001
 From: Yoni Water Man 
