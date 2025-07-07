@@ -23,7 +23,7 @@ index 079c4c7..8dfb660 100644
 -
 -The core of how `gosu` works is stolen directly from how Docker/libcontainer itself starts an application inside a container (and in fact, is using the `/etc/passwd` processing code directly from libcontainer's codebase).
 -
--```console
+-console
 -$ gosu
 -Usage: ./gosu user-spec command [args]
 -   eg: ./gosu tianon bash
@@ -31,7 +31,7 @@ index 079c4c7..8dfb660 100644
 -       ./gosu 1000:1 id
 -
 -./gosu version: 1.1 (go1.3.1 on linux/amd64; gc)
--```
+-
 -
 -Once the user/group is processed, we switch to that user, then we `exec` the specified process and `gosu` itself is no longer resident or involved in the process lifecycle at all.  This avoids all the issues of signal passing and TTY, and punts them to the process invoking `gosu` and the process being invoked by `gosu`, where they belong.
 -
@@ -55,7 +55,7 @@ index 079c4c7..8dfb660 100644
 -
 -## Why?
 -
--```console
+-console
 -$ docker run -it --rm ubuntu:trusty su -c 'exec ps aux'
 -USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 -root         1  0.0  0.0  46636  2688 ?        Ss+  02:22   0:00 su -c exec ps a
@@ -67,7 +67,7 @@ index 079c4c7..8dfb660 100644
 -$ docker run -it --rm -v $PWD/gosu-amd64:/usr/local/bin/gosu:ro ubuntu:trusty gosu root ps aux
 -USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 -root         1  0.0  0.0   7140   768 ?        Rs+  02:22   0:00 ps aux
- ```
+ 
 +https://internetworking.dev/mitigating-gosu-security-concerns/
 +    https://archive.is/wip/98TVx
  
@@ -83,21 +83,21 @@ index 079c4c7..8dfb660 100644
 -
 -Available in newer `util-linux` (`>= 2.32.1-0.2`, in Debian; https://manpages.debian.org/buster/util-linux/setpriv.1.en.html):
 -
--```console
+-console
 -$ docker run -it --rm buildpack-deps:buster-scm setpriv --reuid=nobody --regid=nogroup --init-groups ps faux
 -USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 -nobody       1  5.0  0.0   9592  1252 pts/0    RNs+ 23:21   0:00 ps faux
--```
+-
 -
 -### `chroot`
 -
 -With the `--userspec` flag, `chroot` can provide similar benefits/behavior:
 -
--```console
+-console
 -$ docker run -it --rm ubuntu:trusty chroot --userspec=nobody / ps aux
 -USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 -nobody       1  5.0  0.0   7136   756 ?        Rs+  17:04   0:00 ps aux
--```
+-
 -
 -### `su-exec`
 -
@@ -109,7 +109,7 @@ index 079c4c7..8dfb660 100644
 +https://github.com/tianon/gosu/pull/154/files
  
 -- `chpst` (part of `runit`)
-+```
++
 \ No newline at end of file
 diff --git a/go.sum b/_old_go.sum
 similarity index 100%
@@ -198,7 +198,7 @@ index 8dfb660..a4de924 100644
 --- a/README.md
 +++ b/README.md
 @@ -1,4 +1,6 @@
- ```
+ 
 +https://hub.docker.com/repository/docker/prapl4group/better-bases/tags?name=gosu&page=1
 +
  https://internetworking.dev/mitigating-gosu-security-concerns/
@@ -207,5 +207,5 @@ index 8dfb660..a4de924 100644
 -- 
 2.49.0
 
-
 ```
+
