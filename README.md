@@ -1,5 +1,7 @@
 * Patch is after: https://github.com/tianon/gosu/commit/e845c46b6bedb4457cda8c88814c30a53cc6c9e7
 * Latest binaries at https://hub.docker.com/repository/docker/prapl4group/better-bases/tags?name=gosu&page=1
+* How to use to fix other docker images:
+  * https://internetworking.dev/mitigating-gosu-security-concerns/ (https://archive.is/wip/98TVx)
 
 ```diff
 From 7b119c01586a470ebc4d7bca99b77b22d72581a6 Mon Sep 17 00:00:00 2001
